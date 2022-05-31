@@ -328,7 +328,7 @@ p {
   height: 294px;
 }
 
-.example-work {
+.example-thumb {
   position: relative;
 }
 
@@ -610,17 +610,18 @@ p {
 }
 
 .project-item {
-  width: calc(100%-90px / 3);
+  width: 370px;
+  height: 404px;
+  /* width: calc(100%-90px / 3); */
   /* 100 %- это ширина container */
   /* 90px - это 2 margin-right в строке (по 30px) и 2 боковых паддинга у контейнера(по 15px) */
   /* 3- это кол-во элементов в строке */
   margin-bottom: 30px;
 }
 
-.project-item:hover {
-  background: #ffffff;
+/* .project-item:hover {
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-}
+} */
 
 .project-item:nth-child(3n) {
   margin-right: 0;
@@ -634,7 +635,33 @@ p {
   text-decoration: none;
 }
 
+.project-thumb {
+  position: relative;
+}
+
+.project-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 370px;
+  height: 294px;
+  padding: 63px 24px;
+  background-color: rgba(33, 150, 243, 0.9);
+  opacity: 0;
+}
+
+.overlay-text {
+  font-size: 18px;
+  line-height: 1.56;
+  letter-spacing: 0.03em;
+  color: #ffffff;
+}
+
 .project-description {
+  width: 370px;
+  height: 110px;
   padding: 20px 24px;
   text-align: left;
   border-right: 1px solid #eeeeee;
