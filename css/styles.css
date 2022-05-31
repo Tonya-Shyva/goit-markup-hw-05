@@ -294,7 +294,7 @@ p {
 }
 
 .title-feature-item,
-.description {
+.description-feature {
   text-align: left;
   font-size: 14px;
   letter-spacing: 0.03em;
@@ -308,7 +308,7 @@ p {
   margin-bottom: 10px;
 }
 
-.description {
+.description-feature {
   line-height: 1.71;
   color: #757575;
 }
@@ -323,9 +323,34 @@ p {
   margin-bottom: 50px;
 }
 
-.work,
+.work-img,
 .project-image {
   height: 294px;
+}
+
+.example-work {
+  position: relative;
+}
+
+.description-work {
+  position: absolute;
+  width: inherit;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 27px 0px;
+  background-color: rgba(47, 48, 58, 0.8);
+}
+
+.description-work-title {
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 14px;
+  line-height: 1.14;
+  text-align: center;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #ffffff;
 }
 
 /* -----------------Наша команда-------------------- */
@@ -388,7 +413,7 @@ p {
 .soc-item:focus {
   background-color: var(--accent-color);
   border-radius: 50%;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  /* box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); */
 }
 
 .soc-link {
