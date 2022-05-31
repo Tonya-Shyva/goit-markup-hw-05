@@ -162,16 +162,17 @@ p {
   align-self: center;
 }
 
-.connect-icon:hover {
-  fill: var(--accent-color);
-}
-
 .studio:hover,
 .portfolio:hover,
 .contacts:hover,
 .email:hover,
 .telnumber:hover {
   color: var(--accent-color);
+}
+
+.email:hover .connect-icon,
+.telnumber:hover .connect-icon {
+  fill: var(--accent-color);
 }
 
 .studio:focus,
@@ -182,11 +183,17 @@ p {
   color: var(--accent-color);
 }
 
+.email:focus .connect-icon,
+.telnumber:focus .connect-icon {
+  fill: var(--accent-color);
+}
+/* -----------------Основной блок информации----------- */
+
 .hero {
   background-color: #c4c4c4;
 }
 
-.overlay {
+.overlay-hero {
   max-width: 1600px;
   max-height: 600px;
   background-image: linear-gradient(to right, rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)),
@@ -264,18 +271,26 @@ p {
   margin: -1px;
 }
 
+.features-list {
+  height: 251px;
+}
+
 .feature-item {
   width: 270px;
 }
 
-.feature-icon {
+.container-feature-icon {
   display: block;
-  width: inherit;
   height: 120px;
   margin-bottom: 30px;
   padding: 25px 100px;
   border-radius: 4px;
   background-color: #f5f4fa;
+}
+
+.feature-icon {
+  width: 70px;
+  height: 70px;
 }
 
 .title-feature-item,
@@ -329,6 +344,7 @@ p {
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 0px 0px 4px 4px;
+  background-color: var(--primary-background-color);
 }
 
 .member-name,
@@ -368,9 +384,11 @@ p {
   margin-right: 0px;
 }
 
-.soc-item:hover {
+.soc-item:hover,
+.soc-item:focus {
   background-color: var(--accent-color);
   border-radius: 50%;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .soc-link {
@@ -396,7 +414,8 @@ p {
   fill: #afb1b8;
 }
 
-.icon-fill:hover {
+.soc-item:hover .icon-fill,
+.soc-item:focus .icon-fill {
   fill: #ffffff;
 }
 
@@ -410,7 +429,7 @@ p {
 }
 
 .customer-item:hover {
-  border: 1px solid #2196f3;
+  border: 1px solid var(--accent-color);
 }
 
 .customer-link {
@@ -427,7 +446,8 @@ p {
   outline: 1px solid #afb1b8;
 } */
 
-.customer-link > .icon-fill:hover {
+.customer-item:hover .icon-fill,
+.customer-item:focus .icon-fill {
   fill: var(--accent-color);
 }
 
@@ -523,7 +543,7 @@ p {
   /* из-за того, что я задала width не значением, а формулой (где 550- это боковой маржин а 30 это 2 боковых паддинга контейнера */
   /* пришлось добавить свойство justify-content вместо боковых маржинов для этого списка*/
   /* Альтернатива ширины
-   width: 620px;
+  width: 620px;
   margin-left: auto;
   margin-right: auto; */
   margin-bottom: 43px;
