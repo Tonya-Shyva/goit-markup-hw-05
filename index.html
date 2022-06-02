@@ -34,11 +34,11 @@
 
           <!--Navigation-->
           <ul class="nav-list list">
-            <li class="studio-item"><a class="studio current" href="index.html">Студия</a></li>
-            <li class="portfolio-item">
+            <li class="nav-item"><a class="studio current" href="index.html">Студия</a></li>
+            <li class="nav-item">
               <a class="portfolio" href="./portfolio.html">Портфолио</a>
             </li>
-            <li class="contacts-item"><a class="contacts" href="">Контакты</a></li>
+            <li class="nav-item"><a class="contacts" href="">Контакты</a></li>
           </ul>
         </nav>
 
@@ -67,7 +67,7 @@
         <div class="overlay-hero">
           <div class="container">
             <h1 class="title-hero">Эффективные решения для вашего бизнеса</h1>
-            <button class="order-service" type="button">Заказать услугу</button>
+            <button class="order-service" data-modal-open>Заказать услугу</button>
           </div>
         </div>
       </section>
@@ -387,7 +387,7 @@
     </main>
 
     <!-- Подвал -->
-    <footer class="down">
+    <footer class="footer">
       <div class="footer-container container">
         <div>
           <!--Logo-->
@@ -443,5 +443,15 @@
         </div>
       </div>
     </footer>
+    <div class="backdrop is-hidden" data-modal>
+      <div class="modal">
+        <button class="btn-close-modal" data-modal-close>
+          <svg class="btn-close-icon" width="11px" height="11px">
+            <use href="./images/icons.svg#icon-btn-close"></use>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <script src="./js/modal.js"></script>
   </body>
 </html>

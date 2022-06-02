@@ -7,6 +7,8 @@ html {
   --title-text-color: #000000;
   --accent-color: #2196f3;
   --primary-background-color: #ffffff;
+
+  --transition-settings: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body {
@@ -23,6 +25,10 @@ body {
   padding-top: 94px;
 }
 
+:last-child {
+  margin-right: 0;
+}
+
 .container {
   width: 1200px;
   margin-left: auto;
@@ -32,10 +38,10 @@ body {
 }
 
 .list {
+  display: flex;
   list-style: none;
   padding: 0;
   margin: 0;
-  display: flex;
 }
 
 .item:not(:last-child) {
@@ -46,6 +52,10 @@ h1,
 h2,
 h3 {
   margin: 0;
+}
+
+a {
+  text-decoration: none;
 }
 
 img {
@@ -62,9 +72,9 @@ p {
 /* Шапка  */
 
 .page-header {
-  border-bottom: 1px solid #ececec;
   padding-top: 24px;
   padding-bottom: 25px;
+  border-bottom: 1px solid #ececec;
 }
 
 .top,
@@ -80,7 +90,6 @@ p {
   font-size: 26px;
   line-height: 1.2;
   letter-spacing: 0.03em;
-  text-decoration: none;
   color: #2196f3;
 }
 
@@ -90,28 +99,42 @@ p {
 
 .logo-end {
   color: var(--title-text-color);
-  text-decoration: none;
 }
 
 /* < !--Navigation--> */
 
 .nav-list {
+  min-width: 294px;
+  justify-content: space-between;
+  align-items: center;
+
   font-weight: 500;
   font-size: 14px;
   line-height: 1.2;
   letter-spacing: 0.02em;
 }
 
-.nav-list .studio.current,
-.nav-list .portfolio.current,
-.nav-list .contacts.current {
+.studio.current,
+.portfolio.current,
+.contacts.current {
   color: var(--accent-color);
+  position: relative;
 }
 
-.studio-item,
-.portfolio-item {
-  margin-right: 50px;
+.nav-item > .current::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  width: 100%;
+  height: 4px;
+  transform: translateY(48px);
+
+  border-radius: 2px;
+  background-color: var(--accent-color);
 }
+
 .studio,
 .portfolio,
 .contacts {
@@ -126,7 +149,7 @@ p {
 
 .email-item,
 .telnumber-item {
-  /* display: flex; */
+  display: flex;
   height: 16px;
   margin: 0;
   padding: 0;
@@ -153,13 +176,14 @@ p {
   line-height: 1.14;
   letter-spacing: 0.02em;
   text-decoration: none;
+  justify-content: center;
+  align-items: center;
 }
 
 .connect-icon {
   margin-right: 10px;
   padding: 0;
   fill: #757575;
-  align-self: center;
 }
 
 .studio:hover,
@@ -172,7 +196,7 @@ p {
 
 .email:hover .connect-icon,
 .telnumber:hover .connect-icon {
-  fill: var(--accent-color);
+  fill: currentColor;
 }
 
 .studio:focus,
@@ -190,12 +214,17 @@ p {
 /* -----------------Основной блок информации----------- */
 
 .hero {
+  /* width: 100%; */
+
   background-color: #c4c4c4;
 }
 
 .overlay-hero {
   max-width: 1600px;
   max-height: 600px;
+  margin-left: auto;
+  margin-right: auto;
+
   background-image: linear-gradient(to right, rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)),
     url('../images/hero-bgi.jpg');
   /* linear-gradient(rgba(47, 48, 58, 0.4)), */
@@ -203,8 +232,6 @@ p {
   background-position: center;
   background-size: cover;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .hero .container {
@@ -214,25 +241,24 @@ p {
 }
 
 .title-hero {
-  color: #ffffff;
   width: 696px;
+  margin-bottom: 30px;
+  margin-left: auto;
+  margin-right: auto;
+
+  color: #ffffff;
   font-weight: 900;
   font-size: 44px;
   line-height: 1.36;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  margin-bottom: 30px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 /* кнопка заказа услуги */
 
 .order-service {
   display: block;
-  cursor: pointer;
-  align-items: center;
-  letter-spacing: 0.06em;
+
   min-width: 200px;
   height: 50px;
   padding: 10px 32px;
@@ -240,16 +266,65 @@ p {
   border-radius: 4px;
   margin-left: auto;
   margin-right: auto;
+
+  cursor: pointer;
+  align-items: center;
+
   color: #ffffff;
   background-color: var(--accent-color);
   font-family: inherit;
   font-weight: 700;
   font-size: 16px;
   line-height: 1.88;
+  letter-spacing: 0.06em;
 }
 
-.order-service:hover {
-  background-color: var(--accent-color);
+/* -----------БЭКДРОП И МОДАЛЬНОЕ ОКНО ДЛЯ ЗАКАЗА УСЛУГИ---------- */
+
+.backdrop.is-hidden {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  min-width: 528px;
+  min-height: 581px;
+
+  background-color: rgba(255, 255, 255, 1);
+  transform: translate(-50%, -50%) scale(1, 1);
+  opacity: 1;
+  transition: transform var(--transition-settings), opacity var(--transition-settings);
+}
+
+.btn-close-modal {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+
+  width: 30px;
+  height: 30px;
+  padding: 6px;
+
+  cursor: pointer;
+  background-color: var(--primary-bg-color);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
 }
 
 /* Особенности */
@@ -284,6 +359,7 @@ p {
   height: 120px;
   margin-bottom: 30px;
   padding: 25px 100px;
+
   border-radius: 4px;
   background-color: #f5f4fa;
 }
@@ -301,11 +377,11 @@ p {
 }
 
 .title-feature-item {
+  margin-top: 0px;
+  margin-bottom: 10px;
   /* font-weight: 700 -бо він автоматично для h1...h6 такий; */
   line-height: 1.14;
   text-transform: uppercase;
-  margin-top: 0px;
-  margin-bottom: 10px;
 }
 
 .description-feature {
@@ -316,11 +392,12 @@ p {
 /* Чем мы занимаемся */
 
 .title {
+  margin-bottom: 50px;
+
   font-size: 36px;
   line-height: 1.17;
   text-align: center;
   letter-spacing: 0.03em;
-  margin-bottom: 50px;
 }
 
 .work-img,
@@ -334,17 +411,20 @@ p {
 
 .description-work {
   position: absolute;
+
   width: inherit;
   bottom: 0;
   left: 0;
   right: 0;
   padding: 27px 0px;
+
   background-color: rgba(47, 48, 58, 0.8);
 }
 
 .description-work-title {
   margin-left: auto;
   margin-right: auto;
+
   font-size: 14px;
   line-height: 1.14;
   text-align: center;
@@ -400,13 +480,9 @@ p {
 .soc-item {
   width: 44px;
   height: 44px;
-  text-align: center;
   margin-right: 10px;
   padding: 12px;
-}
-
-.soc-item:last-child {
-  margin-right: 0px;
+  transform: background-color var(--transition-settings);
 }
 
 .soc-item:hover,
@@ -417,16 +493,17 @@ p {
 }
 
 .soc-link {
-  text-decoration: none;
   display: block;
   width: 20px;
   height: 20px;
   padding: 0;
   margin: 0;
-  border: none;
+
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
+
+  border: none;
 }
 
 .soc-icon {
@@ -458,18 +535,14 @@ p {
 }
 
 .customer-link {
-  text-decoration: none;
   display: block;
   width: 106px;
   height: 60px;
   margin: 0;
+
   text-align: center;
   border: none;
 }
-
-/* .customer-link :last-child {
-  outline: 1px solid #afb1b8;
-} */
 
 .customer-item:hover .icon-fill,
 .customer-item:focus .icon-fill {
@@ -478,9 +551,11 @@ p {
 
 /* Футер */
 
-.down {
+.footer {
+  width: 100%;
   padding-top: 60px;
   padding-bottom: 60px;
+
   font-size: 14px;
   line-height: 1.71;
   letter-spacing: 0.03em;
@@ -495,9 +570,10 @@ p {
 }
 
 .find-us {
-  font-style: inherit;
   width: 231px;
   margin-top: 20px;
+
+  font-style: inherit;
 }
 
 .map-address {
@@ -516,9 +592,7 @@ p {
 
 .email-address,
 .tel-number {
-  text-decoration: none;
   color: rgba(255, 255, 255, 0.6);
-  text-align: left;
 }
 
 .tel-number {
@@ -526,10 +600,7 @@ p {
 }
 
 .email-address:hover,
-.tel-number:hover {
-  color: var(--accent-color);
-}
-
+.tel-number:hover,
 .email-address:focus,
 .tel-number:focus {
   color: var(--accent-color);
@@ -565,6 +636,7 @@ p {
 .filters.list {
   width: calc(100%-580px);
   justify-content: center;
+  align-items: center;
   /* из-за того, что я задала width не значением, а формулой (где 550- это боковой маржин а 30 это 2 боковых паддинга контейнера */
   /* пришлось добавить свойство justify-content вместо боковых маржинов для этого списка*/
   /* Альтернатива ширины
@@ -576,23 +648,26 @@ p {
 
 .btn-item:not(:last-child) {
   margin-right: 8.12px;
-  /* это для всех лишек, кроме последней */
 }
 
 .button {
-  display: inline-block;
+  display: flex;
   color: var(--primary-text-color);
   background-color: #f5f4fa;
   cursor: pointer;
   font-weight: 500;
   font-size: 16px;
   line-height: 1.62;
-  text-align: center;
   letter-spacing: 0.03em;
   padding: 5px 22.35px;
   border: 0px;
   border-radius: 4px;
   min-width: 74.08px;
+
+  transition: color var(--transition-settings), background-color var(--transition-settings),
+    filter var(--transition-settings);
+  /* transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); */
 }
 
 .filters .button:hover {
@@ -603,6 +678,7 @@ p {
 .filters .button:focus {
   background-color: var(--accent-color);
   color: #ffffff;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 
 .projects-list {
@@ -610,9 +686,7 @@ p {
 }
 
 .project-item {
-  width: 370px;
-  height: 404px;
-  /* width: calc(100%-90px / 3); */
+  width: calc(100%-90px / 3);
   /* 100 %- это ширина container */
   /* 90px - это 2 margin-right в строке (по 30px) и 2 боковых паддинга у контейнера(по 15px) */
   /* 3- это кол-во элементов в строке */
@@ -620,7 +694,8 @@ p {
 }
 
 /* .project-item:hover {
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
+    1px 4px 6px rgba(0, 0, 0, 0.16);
 } */
 
 .project-item:nth-child(3n) {
@@ -631,25 +706,26 @@ p {
   margin-bottom: 0px;
 }
 
-.project-card {
-  text-decoration: none;
-}
-
 .project-thumb {
   position: relative;
+  overflow: hidden;
 }
 
 .project-overlay {
   position: absolute;
   top: 0;
-  right: 0;
-  bottom: 0;
   left: 0;
-  width: 370px;
-  height: 294px;
+  width: 100%;
+  height: 100%;
+
   padding: 63px 24px;
   background-color: rgba(33, 150, 243, 0.9);
-  opacity: 0;
+  transform: translateY(100%);
+  transition: transform var(--transition-settings);
+}
+
+.project-card:hover .project-overlay {
+  transform: translateY(0%);
 }
 
 .overlay-text {
@@ -657,6 +733,10 @@ p {
   line-height: 1.56;
   letter-spacing: 0.03em;
   color: #ffffff;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }
 
 .project-description {

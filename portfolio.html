@@ -33,11 +33,11 @@
 
           <!--Navigation-->
           <ul class="nav-list list">
-            <li class="studio-item"><a class="studio" href="index.html">Студия</a></li>
-            <li class="portfolio-item">
+            <li class="nav-item"><a class="studio" href="index.html">Студия</a></li>
+            <li class="nav-item">
               <a class="portfolio current" href="./portfolio.html">Портфолио</a>
             </li>
-            <li class="contacts-item"><a class="contacts" href="">Контакты</a></li>
+            <li class="nav-item"><a class="contacts" href="">Контакты</a></li>
           </ul>
         </nav>
 
@@ -66,18 +66,20 @@
           <!--Cпрятать h1 в css-->
           <h1 class="visually-hidden">Наши работы</h1>
           <ul class="filters list">
-            <li class="btn-item"><button class="filter-all button" type="button">Все</button></li>
             <li class="btn-item">
-              <button class="filter-websites button" type="button">Веб-сайты</button>
+              <button class="btn-all button" type="button">Все</button>
             </li>
             <li class="btn-item">
-              <button class="filter-apps button" type="button">Приложения</button>
+              <button class="btn-websites button" type="button">Веб-сайты</button>
             </li>
             <li class="btn-item">
-              <button class="filter-design button" type="button">Дизайн</button>
+              <button class="btn-apps button" type="button">Приложения</button>
             </li>
             <li class="btn-item">
-              <button class="filter-marketing button" type="button">Маркетинг</button>
+              <button class="btn-design button" type="button">Дизайн</button>
+            </li>
+            <li class="btn-item">
+              <button class="btn-marketing button" type="button">Маркетинг</button>
             </li>
           </ul>
 
@@ -99,6 +101,7 @@
                     </p>
                   </div>
                 </div>
+
                 <div class="project-description">
                   <h2 class="project-title">Технокряк</h2>
                   <p class="project-filter">Веб-сайт</p>
@@ -200,7 +203,7 @@
     </main>
 
     <!-- Подвал -->
-    <footer class="down">
+    <footer class="footer">
       <div class="footer-container container">
         <div>
           <!--Logo-->
