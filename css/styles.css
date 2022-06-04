@@ -25,10 +25,6 @@ body {
   padding-top: 94px;
 }
 
-:last-child {
-  margin-right: 0;
-}
-
 .container {
   width: 1200px;
   margin-left: auto;
@@ -78,8 +74,10 @@ p {
 }
 
 .top,
-.page-nav {
+.page-nav,
+.connection-list {
   display: flex;
+  justify-content: center;
   align-items: center;
 }
 
@@ -106,7 +104,6 @@ p {
 .nav-list {
   min-width: 294px;
   justify-content: space-between;
-  align-items: center;
 
   font-weight: 500;
   font-size: 14px;
@@ -176,7 +173,6 @@ p {
   line-height: 1.14;
   letter-spacing: 0.02em;
   text-decoration: none;
-  justify-content: center;
   align-items: center;
   transition: color var(--transition-settings);
 }
@@ -228,7 +224,6 @@ p {
 
   background-image: linear-gradient(to right, rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)),
     url('../images/hero-bgi.jpg');
-  /* linear-gradient(rgba(47, 48, 58, 0.4)), */
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -258,17 +253,19 @@ p {
 /* кнопка заказа услуги */
 
 .order-service {
-  display: block;
+  display: flex;
 
   min-width: 200px;
   height: 50px;
-  padding: 10px 32px;
+
   border: 0px;
   border-radius: 4px;
   margin-left: auto;
   margin-right: auto;
+  padding: 0;
 
   cursor: pointer;
+  justify-content: center;
   align-items: center;
 
   color: #ffffff;
@@ -297,6 +294,8 @@ p {
   height: 100%;
 
   background-color: rgba(0, 0, 0, 0.2);
+
+  transition: opacity var(--transition-settings);
 }
 
 .modal {
@@ -317,20 +316,22 @@ p {
   position: absolute;
   top: 8px;
   right: 8px;
+  display: flex;
 
   width: 30px;
   height: 30px;
-  padding: 6px;
+  padding: 0;
 
   cursor: pointer;
   background-color: var(--primary-bg-color);
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 50%;
-  text-align: center;
+  justify-content: center;
+  align-items: center;
 }
 .btn-close-icon {
   display: block;
-  margin: auto;
+  margin: 0;
 }
 /* Особенности */
 
@@ -360,10 +361,11 @@ p {
 }
 
 .container-feature-icon {
-  display: block;
+  display: flex;
   height: 120px;
   margin-bottom: 30px;
-  padding: 25px 100px;
+  justify-content: center;
+  align-items: center;
 
   border-radius: 4px;
   background-color: #f5f4fa;
@@ -416,12 +418,15 @@ p {
 
 .description-work {
   position: absolute;
+  display: flex;
 
   width: inherit;
+  height: 70px;
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 27px 0px;
+  justify-content: center;
+  align-items: center;
 
   background-color: rgba(47, 48, 58, 0.8);
 }
@@ -481,35 +486,33 @@ p {
 
 .soc-item {
   display: block;
-  width: 44px;
   margin-right: 10px;
-  padding: 12px;
-  border-radius: 50%;
-
-  transition: background-color var(--transition-settings);
 }
 
 .soc-item:last-child {
   margin-right: 0px;
 }
 
-.soc-item:hover,
-.soc-item:focus {
-  background-color: var(--accent-color);
-}
-
 .soc-link {
-  display: block;
-  width: 20px;
-  height: 20px;
-  padding: 0;
-  margin: 0;
+  display: flex;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
 
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
 
   border: none;
+  justify-content: center;
+  align-items: center;
+
+  transition: background-color var(--transition-settings);
+}
+
+.soc-link:hover,
+.soc-link:focus {
+  background-color: var(--accent-color);
 }
 
 .soc-icon {
@@ -523,19 +526,21 @@ p {
   transition: fill var(--transition-settings);
 }
 
-.soc-item:hover .icon-fill,
-.soc-item:focus .icon-fill {
+.soc-link:hover .icon-fill,
+.soc-link:focus .icon-fill {
   fill: #ffffff;
 }
 
 /* ---------- Постоянные клиенты ---------- */
 .customer-item {
+  display: flex;
   width: 170px;
   height: 92px;
-  padding: 16px 32px;
 
   border: 1px solid #afb1b8;
   border-radius: 4px;
+  justify-content: center;
+  align-items: center;
 
   transition: border var(--transition-settings);
 }
@@ -545,12 +550,13 @@ p {
 }
 
 .customer-link {
-  display: block;
+  display: flex;
   width: 106px;
   height: 60px;
   margin: 0;
 
-  text-align: center;
+  justify-content: center;
+  align-items: center;
   border: none;
 }
 
@@ -723,7 +729,7 @@ p {
 
   padding: 63px 24px;
   background-color: rgba(33, 150, 243, 0.9);
-  transform: translateY(100%);
+  transform: translateY(101%);
   transition: transform var(--transition-settings);
 }
 
