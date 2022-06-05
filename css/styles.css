@@ -301,21 +301,23 @@ p {
 }
 
 .is-hidden .modal {
-  transform: translate(-50%, -50%) scale(0.5, 0.5);
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.5);
 }
 
 .modal {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) scale(1, 1);
+  transform: translate(-50%, -50%) scale(1);
 
   min-width: 528px;
   min-height: 581px;
 
   background-color: rgba(255, 255, 255, 1);
 
-  transition: transform var(--transition-settings);
+  opacity: 1;
+  transition: transform var(--transition-settings), opacity var(--transition-settings);
 }
 
 .btn-close-modal {
