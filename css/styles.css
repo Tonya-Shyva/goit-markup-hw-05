@@ -74,8 +74,7 @@ p {
 }
 
 .top,
-.page-nav,
-.connection-list {
+.page-nav {
   display: flex;
   align-items: center;
 }
@@ -134,6 +133,7 @@ p {
 .nav-list,
 .connection-list {
   margin-left: auto;
+  align-items: center;
 }
 
 .studio,
@@ -296,21 +296,26 @@ p {
 
   background-color: rgba(0, 0, 0, 0.2);
 
-  /* transition: opacity var(--transition-settings); */
+  opacity: 1;
+  transition: opacity var(--transition-settings);
+}
+
+.is-hidden .modal {
+  transform: translate(-50%, -50%) scale(0.5, 0.5);
 }
 
 .modal {
   position: absolute;
   top: 50%;
   left: 50%;
+  transform: translate(-50%, -50%) scale(1, 1);
 
   min-width: 528px;
   min-height: 581px;
 
   background-color: rgba(255, 255, 255, 1);
-  transform: translate(-50%, -50%) scale(1, 1);
-  opacity: 1;
-  transition: transform var(--transition-settings), opacity var(--transition-settings);
+
+  transition: transform var(--transition-settings);
 }
 
 .btn-close-modal {
@@ -330,6 +335,7 @@ p {
   justify-content: center;
   align-items: center;
 }
+
 .btn-close-icon {
   display: block;
   margin: 0;
