@@ -283,6 +283,8 @@ p {
   visibility: hidden;
   opacity: 0;
   pointer-events: none;
+
+  transition: opacity var(--transition-settings);
 }
 
 .backdrop {
@@ -295,7 +297,7 @@ p {
 
   background-color: rgba(0, 0, 0, 0.2);
 
-  transition: opacity var(--transition-settings);
+  /* transition: opacity var(--transition-settings); */
 }
 
 .modal {
@@ -545,7 +547,8 @@ p {
   transition: border var(--transition-settings);
 }
 
-.customer-item:hover {
+.customer-item:hover,
+.customer-item:focus {
   border: 1px solid var(--accent-color);
 }
 
@@ -561,7 +564,8 @@ p {
 }
 
 .customer-item:hover .icon-fill,
-.customer-item:focus .icon-fill {
+.customer-item:focus .icon-fill,
+.customer-link:focus .icon-fill {
   fill: var(--accent-color);
 }
 
@@ -733,7 +737,8 @@ p {
   transition: transform var(--transition-settings);
 }
 
-.project-card:hover .project-overlay {
+.project-card:hover .project-overlay,
+.project-card:focus .project-overlay {
   transform: translateY(0%);
 }
 
@@ -756,9 +761,12 @@ p {
   border-right: 1px solid #eeeeee;
   border-bottom: 1px solid #eeeeee;
   border-left: 1px solid #eeeeee;
+  box-shadow: none;
   transition: box-shadow var(--transition-settings);
 }
-.project-description:hover {
+
+.project-card:hover .project-description,
+.project-card:focus .project-description {
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
     1px 4px 6px rgba(0, 0, 0, 0.16);
 }
